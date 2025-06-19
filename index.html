@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Football Discord - The Online Pub for Football Fans</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+    <!-- Background particles -->
+    <div class="bg-particles" id="particles"></div>
+
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav">
+            <a href="#" class="logo">
+                <img src="./assets/img/server_logo.gif" alt="Football Logo" class="logo-img">
+                Football
+            </a>
+            <a href="https://discord.gg/D6Z9A7HcRz" class="join-btn" target="_blank">Join Discord</a>
+        </nav>
+    </header>
+
+
+    <!-- Hero Section -->
+    <section class="hero fade-in">
+        <h1>The Online Pub for Football Fans</h1>
+        <p>Live matches, analysis, banter & more</p>
+        <div class="tagline">The banter's loud, the takes are wild, and the match is always on.</div>
+    </section>
+
+    <!-- Stats -->
+    <section class="stats fade-in">
+        <div class="stat-card">
+            <span class="stat-number">100K+</span>
+            <span class="stat-label">Active Members</span>
+        </div>
+        <div class="stat-card">
+            <span class="stat-number">1.2M+</span>
+            <span class="stat-label">Messages Sent</span>
+        </div>
+        <div class="stat-card">
+            <span class="stat-number">60+</span>
+            <span class="stat-label">Weekly Match Threads</span>
+        </div>
+    </section>
+
+    <!-- Features -->
+    <section class="features fade-in">
+        <h2>What's on Tap?</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <span class="feature-icon">🔥</span>
+                <h3>Live Match Threads</h3>
+                <p>From El Clásico to MLS After Dark — we've got it all. Real-time reactions, tactical breakdowns, and pure football chaos.</p>
+            </div>
+            <div class="feature-card">
+                <span class="feature-icon">🏆</span>
+                <h3>Fantasy Leagues & Predictions</h3>
+                <p>Put your ball knowledge (and luck) to the test. Weekly competitions, season-long leagues, and bragging rights.</p>
+            </div>
+            <div class="feature-card">
+                <span class="feature-icon">📊</span>
+                <h3>Tactical Debates & Analysis</h3>
+                <p>Charts, heatmaps, and "he's finished" takes live side-by-side. Where passion meets data.</p>
+            </div>
+            <div class="feature-card">
+                <span class="feature-icon">🤝</span>
+                <h3>Welcoming Community</h3>
+                <p>A friendly space for football fans of all clubs and nations. No matter your team, you belong here.</p>
+            </div>
+            <div class="feature-card">
+                <span class="feature-icon">🌍</span>
+                <h3>Every League, Every Club</h3>
+                <p>Premier League to Paraguayan Second Division. EPL, La Liga, Bundesliga, UCL, AFCON — we cover it all.</p>
+            </div>
+            <div class="feature-card">
+                <span class="feature-icon">💬</span>
+                <h3>Dedicated Channels</h3>
+                <p>Club-specific zones, competition threads, transfer windows, and specialized discussions for every football obsession.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials fade-in">
+        <h2>Why Fans Stay</h2>
+        <div class="testimonials-grid">
+            <div class="testimonial">
+                <div class="testimonial-text">"This place got me back into the sport. The community is incredible."</div>
+                <div class="testimonial-author">— @FootballFanatic</div>
+            </div>
+            <div class="testimonial">
+                <div class="testimonial-text">"Feels like watching matches with a pub full of mates. Best football community online."</div>
+                <div class="testimonial-author">— @TacticalGenius</div>
+            </div>
+            <div class="testimonial">
+                <div class="testimonial-text">"Every time Man Utd plays it turns into a war zone. I love it here!"</div>
+                <div class="testimonial-author">— @RedDevil2024</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta">
+        <h2>Ready to Join the Conversation?</h2>
+        <p>Join 100,000+ football fans in the ultimate online pub experience</p>
+        <a href="https://discord.gg/D6Z9A7HcRz" class="cta-btn" target="_blank">Join Our Discord Server</a>
+    </section>
+
+    <script>
+        // Create floating particles
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = 50;
+
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.top = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 6 + 's';
+                particle.style.animationDuration = (Math.random() * 4 + 4) + 's';
+                particlesContainer.appendChild(particle);
+            }
+        }
+
+        // Scroll animations
+        function handleScrollAnimations() {
+            const elements = document.querySelectorAll('.fade-in');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            });
+
+            elements.forEach(element => {
+                observer.observe(element);
+            });
+        }
+
+        // Animated counter for stats
+        function animateCounters() {
+            const counters = document.querySelectorAll('.stat-number');
+            
+            counters.forEach(counter => {
+                const target = counter.textContent;
+                const numericValue = parseInt(target.replace(/[^\d]/g, ''));
+                const suffix = target.replace(/[\d]/g, '');
+                
+                let current = 0;
+                const increment = numericValue / 100;
+                
+                const timer = setInterval(() => {
+                    current += increment;
+                    if (current >= numericValue) {
+                        counter.textContent = target;
+                        clearInterval(timer);
+                    } else {
+                        counter.textContent = Math.floor(current) + suffix;
+                    }
+                }, 20);
+            });
+        }
+
+        // Initialize everything
+        document.addEventListener('DOMContentLoaded', () => {
+            createParticles();
+            handleScrollAnimations();
+            
+            // Trigger counter animation when stats section is visible
+            const statsSection = document.querySelector('.stats');
+            const statsObserver = new IntersectionObserver((entries) => {
+                if (entries[0].isIntersecting) {
+                    animateCounters();
+                    statsObserver.disconnect();
+                }
+            });
+            statsObserver.observe(statsSection);
+        });
+
+        // Add smooth scrolling and dynamic effects
+        document.addEventListener('mousemove', (e) => {
+            const particles = document.querySelectorAll('.particle');
+            const mouseX = e.clientX / window.innerWidth;
+            const mouseY = e.clientY / window.innerHeight;
+            
+            particles.forEach((particle, index) => {
+                const speed = (index % 5 + 1) * 0.5;
+                particle.style.transform += ` translate(${mouseX * speed}px, ${mouseY * speed}px)`;
+            });
+        });
+    </script>
+</body>
+</html>
