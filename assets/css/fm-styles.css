@@ -21,6 +21,8 @@
     display: flex;
     gap: 20px;
     margin-left: auto;
+    margin-right: auto; /* Add this line */
+    justify-content: center; /* Add this line */
 }
 
 .fm-nav-link {
